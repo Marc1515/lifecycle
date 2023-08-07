@@ -1,4 +1,4 @@
-import { AfterContentChecked, AfterContentInit, AfterViewChecked, AfterViewInit, Component, DoCheck, OnChanges, OnDestroy, OnInit } from '@angular/core';
+import { AfterContentChecked, AfterContentInit, AfterViewChecked, AfterViewInit, Component, DoCheck, OnChanges, OnDestroy, OnInit, SimpleChanges } from '@angular/core';
 
 @Component({
   selector: 'products-product-page',
@@ -9,6 +9,7 @@ export class ProductComponent implements OnInit, OnChanges, DoCheck, AfterConten
 
 
   public isProductVisible: boolean = false;
+  public currentPrice: number = 10;
 
   constructor() {
     console.log('Constructor')
@@ -19,7 +20,8 @@ export class ProductComponent implements OnInit, OnChanges, DoCheck, AfterConten
     console.log('ngOnInit')
   }
 
-  ngOnChanges(): void {
+  ngOnChanges(changes: SimpleChanges): void {
+    console.log({changes})
     console.log('ngOnChanges')
   }
 
@@ -45,6 +47,10 @@ export class ProductComponent implements OnInit, OnChanges, DoCheck, AfterConten
 
   ngOnDestroy(): void {
     console.log('ngOnDestroy')
+  }
+
+  increasePrice() {
+    this.currentPrice++;
   }
 
 }
